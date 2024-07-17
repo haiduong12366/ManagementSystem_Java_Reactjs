@@ -2,7 +2,6 @@ import { useState } from "react";
 import Signup from "./Signup";
 import Login from "./Login";
 import { Button } from "@/components/ui/button";
-import "./Auth.css"
 
 
 

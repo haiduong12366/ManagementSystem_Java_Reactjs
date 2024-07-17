@@ -26,13 +26,15 @@ public class PaymentController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/createVnpayPayment/{planType}")
+    @PostMapping("/createVnpayPayment/{planType}")
     public ResponseEntity<?> createVnpayPayment(@PathVariable PlanType planType,
+                                                @RequestBody long price,
                                                 @RequestHeader("Authorization") String jwt
     ) throws Exception {
 
         User user = userService.findUserProfileByJwt(jwt);
-        long amount = 25000 * 100 * 799;
+        //long price = 99;
+        long amount = 25000 * 100 * price;
         if(planType.equals(PlanType.ANNUALLY)){
             amount = amount*12;
             amount = (long)(amount*0.7);

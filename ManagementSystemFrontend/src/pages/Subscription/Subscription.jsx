@@ -1,8 +1,15 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import SubscriptionCard from "./SubscriptionCard";
+import { getUserSubscription } from "@/Redux/Subscription/Action";
+import { useEffect } from "react";
 
 const Subscription = () => {
   const {subscription}=useSelector(s=>s)
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    dispatch(getUserSubscription())
+  },[])
 
   const paidPlan = [
     "Add unlimited projects",
@@ -53,7 +60,7 @@ const Subscription = () => {
             planName: "Monthly Paid Plan",
             features: paidPlan,
             planType: "MONTHLY",
-            price: "799$",
+            price: "99$",
             buttonName: subscription.userSubscription?.planType =="MONTHLY" ? "Current Plan" : "Get started",
           }}
         />
@@ -62,7 +69,7 @@ const Subscription = () => {
             planName: "Annual Paid Plan",
             features: annualPlan,
             planType: "ANNUALLY",
-            price: "6711$",
+            price: "831$",
             buttonName: subscription.userSubscription?.planType =="ANNUALLY" ? "Current Plan" : "Get started",
           }}
         />

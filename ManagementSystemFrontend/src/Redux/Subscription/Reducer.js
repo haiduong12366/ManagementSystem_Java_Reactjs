@@ -20,7 +20,7 @@ export const subscriptionReducer = (state = initialState, action) => {
                 ...state, loading: false, userSubscription: action.payload
             }
         
-            case GET_USER_SUBSCRIPTION_FAILURE:
+        case GET_USER_SUBSCRIPTION_FAILURE:
         case UPGRADE_SUBSCRIPTION_FAILURE:
             return {
                 ...state, loading: false, error: action.error

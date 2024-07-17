@@ -4,15 +4,14 @@ import Api from "@/config/api";
 import { CheckCircledIcon } from "@radix-ui/react-icons";
 
 const SubscriptionCard = ({ data }) => {
-  const handleUpgrade = async () => {
-    
 
+  const handleUpgrade = async () => {
     const { api } = Api(localStorage.getItem("jwt"));
     const planType = data.planType;
+    const price = data.price.substring(0,data.price.length-1)
     try {
-      const { data } = await api.get(
-        `/api/payments/createVnpayPayment/${planType}`
-      );
+      const { data } = await api.post(
+        `/api/payments/createVnpayPayment/${planType}`,price);
       window.location.href = data;
     } catch (error) {
       console.log(error);
@@ -30,7 +29,7 @@ const SubscriptionCard = ({ data }) => {
         <span>{data.planType}</span>
       </p>
       {data.planType == "ANNUALLY" && <p className="text-green-500">30% off</p>}
-      <Button type="button" onClick={handleUpgrade} className="w-full">
+      <Button type="button" onClick={handleUpgrade} className="w-full" disabled={data.planType=="FREE" || data.buttonName=="Current Plan"}>
         {data.buttonName}
       </Button>
       <div>

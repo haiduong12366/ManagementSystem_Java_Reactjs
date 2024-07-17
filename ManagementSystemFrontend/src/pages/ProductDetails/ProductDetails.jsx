@@ -16,7 +16,7 @@ import UpdateProjectForm from "./UpdateProjectForm"
 const ProductDetails = () => {
     const dispatch = useDispatch()
     const {id} = useParams()
-    const {project} = useSelector(store=>store)
+    const {project,auth} = useSelector(store=>store)
     const handleProjectInvitation = () => {
 
     }
@@ -29,20 +29,23 @@ const ProductDetails = () => {
                 <div className="gap-5 lg:flex justify-between pb-4">
                     <ScrollArea className="text-gray-400 pb-10 w-full">
                         <div className="flex justify-between">
-                        <h1 className="text-lg font-semibold pb-5">{project.projectDetails?.name}</h1>
-                            <Dialog>
-                                    <DialogTrigger>
-                                        <DialogClose>
-                                            <Button size="sm" variant="outline" className="ml-2" onClick={handleProjectInvitation}>
-                                                <span>Update</span>
-                                            </Button>
-                                        </DialogClose>
-                                    </DialogTrigger>
-                                    <DialogContent>
-                                        <DialogHeader>Update project</DialogHeader>
-                                        <UpdateProjectForm />
-                                    </DialogContent>
-                                </Dialog></div>
+                            <h1 className="text-lg font-semibold pb-5">{project.projectDetails?.name}</h1>
+                            {project.projectDetails?.owner.id ==auth.user.id &&
+                                <Dialog>
+                                        <DialogTrigger>
+                                            <DialogClose>
+                                                <Button size="sm" variant="outline" className="ml-2 bg-white" onClick={handleProjectInvitation}>
+                                                    <span className="text-black font-semibold">Update</span>
+                                                </Button>
+                                            </DialogClose>
+                                        </DialogTrigger>
+                                        <DialogContent>
+                                            <DialogHeader>Update project</DialogHeader>
+                                            <UpdateProjectForm />
+                                        </DialogContent>
+                                    </Dialog>
+                            }
+                        </div>
                         
                         <div className="space-y-5 pb-10 text-sm">
                             <p className="w-full md:max-w-lg lg:max-w-xl ">{project.projectDetails?.description}</p>

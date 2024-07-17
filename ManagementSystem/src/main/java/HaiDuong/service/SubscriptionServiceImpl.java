@@ -51,7 +51,6 @@ public class SubscriptionServiceImpl implements SubscriptionService{
         }else {
             subscription.setGetSubscriptionEndDate(LocalDate.now().plusMonths(1));
         }
-
         return subscriptionRepository.save(subscription);
     }
 

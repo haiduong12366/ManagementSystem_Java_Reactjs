@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
-import "./Auth.css";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "@/Redux/Auth/Action";
 import { useState } from "react";

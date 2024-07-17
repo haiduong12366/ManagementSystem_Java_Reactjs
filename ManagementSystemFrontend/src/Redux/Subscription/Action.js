@@ -8,7 +8,7 @@ export const getUserSubscription = () => async (dispatch) => {
 
     dispatch({ type: GET_USER_SUBSCRIPTION_REQUEST })
     try {
-        const { data } = await api.pat("/api/subscriptions/user")
+        const { data } = await api.get("/api/subscriptions/user")
         console.log("user subscription", data)
         dispatch({ type: GET_USER_SUBSCRIPTION_SUCCESS, payload: data })
     } catch (error) {

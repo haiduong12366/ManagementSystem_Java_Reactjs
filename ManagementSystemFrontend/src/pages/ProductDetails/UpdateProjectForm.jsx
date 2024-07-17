@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form"
 import { tags } from "../ProjectList/ProjectList"
 import { Cross1Icon } from "@radix-ui/react-icons"
 import { useDispatch, useSelector } from "react-redux"
-import { createProject, updateProject } from "@/Redux/Project/Action"
+import {  updateProject } from "@/Redux/Project/Action"
 
 const UpdateProjectForm = () => {
   const {project} = useSelector(store=>store)

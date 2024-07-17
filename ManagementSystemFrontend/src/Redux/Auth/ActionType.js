@@ -10,4 +10,8 @@ export const GET_USER_REQUEST = "GET_USER_REQUEST";
 export const GET_USER_SUCCESS = "GET_USER_SUCCESS";
 export const GET_USER_FAILURE = "GET_USER_FAILURE";
 
+export const UPDATE_REQUEST = "UPDATE_REQUEST";
+export const UPDATE_SUCCESS = "UPDATE_SUCCESS";
+export const UPDATE_FAILURE = "UPDATE_FAILURE";
+
 export const LOGOUT = "LOGOUT";

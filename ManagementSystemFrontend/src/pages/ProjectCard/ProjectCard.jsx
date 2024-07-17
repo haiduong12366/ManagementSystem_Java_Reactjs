@@ -9,10 +9,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { DotFilledIcon, DotsVerticalIcon } from "@radix-ui/react-icons";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const ProjectCard = ({ item }) => {
+  const {auth} = useSelector(s=>s)
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleDelete = () => {
@@ -41,10 +42,13 @@ const ProjectCard = ({ item }) => {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
-                  <DropdownMenuItem>Update</DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigate("/project/"+item.id)}>
+                    View
+                  </DropdownMenuItem>
+                  {item.owner?.id==auth.user.id&&
                   <DropdownMenuItem onClick={handleDelete}>
                     Delete
-                  </DropdownMenuItem>
+                  </DropdownMenuItem>}
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>
